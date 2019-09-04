@@ -1,0 +1,6 @@
+App\Entity\Question:
+    attributes:
+        id:
+            groups: ['Question']
+        answers:
+            groups: ['Question']

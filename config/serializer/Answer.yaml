@@ -1,0 +1,5 @@
+App\Entity\Answer:
+    attributes:
+        id:
+            groups: ['Answer']
+

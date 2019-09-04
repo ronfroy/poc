@@ -1,0 +1,14 @@
+App\Entity\Question:
+    type: entity
+    repositoryClass: App\Repository\QuestionRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    oneToMany:
+        answers:
+            cascade: ['persist', 'remove']
+            targetEntity: Answer
+            orphanRemoval: true
+            mappedBy: question

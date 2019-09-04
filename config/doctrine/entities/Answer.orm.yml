@@ -1,0 +1,13 @@
+App\Entity\Answer:
+    type: entity
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    manyToOne:
+        question:
+            targetEntity: App\Entity\Question
+            joinColumn:
+                name: question_id
+                referencedColumnName: id

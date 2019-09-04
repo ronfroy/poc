@@ -1,0 +1,5 @@
+App\Entity\Locale:
+    fr:
+        code: 'FR'
+    en:
+        code: 'EN'

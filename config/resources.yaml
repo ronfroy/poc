@@ -1,0 +1,15 @@
+resources:
+  App\Entity\Locale:
+    collectionOperations: ['GET']
+    itemOperations: ['GET']
+
+  App\Entity\Question:
+    attributes:
+      normalization_context: { groups: ['Question', 'Answer'] }
+      denormalization_context: { groups: ['Question', 'Answer'] }
+    collectionOperations: ['GET']
+    itemOperations: ['GET']
+
+  App\Entity\Answer:
+    collectionOperations: ['GET']
+    itemOperations: ['GET']
