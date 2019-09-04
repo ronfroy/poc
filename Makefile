@@ -1,7 +1,7 @@
 .EXPORT_ALL_VARIABLES:
 .RECIPEPREFIX +=
 .DEFAULT_GOAL := help
-.PHONY: fixtures
+.PHONY: fixtures assets
 COLOR_RESET = \033[0m
 COLOR_ERROR = \033[31m
 COLOR_INFO = \033[32m
@@ -11,14 +11,18 @@ PROJECT ?= "Project"
 UID = $(shell id -u)
 
 ## Initialize environment & application
-init: docker-up sleep composer database fixtures
+init: docker-up sleep composer database fixtures yarn assets
 
 ## Restore environment & application
 restore: docker-down docker-build init
 
 ## Spawn shell in app's container
-shell:
+php:
     docker-compose exec -u ${UID} app sh
+
+## Spawn shell in node's container
+node:
+    docker-compose exec -u ${UID} node sh
 
 ## Start docker environment
 docker-up:
@@ -56,16 +60,25 @@ fixtures:
 
 ## Execute phpunit
 phpunit:
-    docker-compose exec -u ${UID} -T app phpdbg -qrr -d memory_limit=-1 bin/phpunit $(file)
+    @docker-compose exec -u ${UID} -T app phpdbg -qrr -d memory_limit=-1 bin/phpunit $(file)
 
 ## Fix source code style
 fix:
-    docker-compose exec -u ${UID} -T app vendor/bin/php-cs-fixer fix src --allow-risky=yes
-    docker-compose exec -u ${UID} -T app vendor/bin/php-cs-fixer fix tests --allow-risky=yes
+    @docker-compose exec -u ${UID} -T app vendor/bin/php-cs-fixer fix src --allow-risky=yes
+    @docker-compose exec -u ${UID} -T app vendor/bin/php-cs-fixer fix tests --allow-risky=yes
+    @docker-compose exec -u ${UID} -T node npm run fix
 
 ## Install vendors dependencies with composer
 composer:
     docker-compose exec -u ${UID} -T app composer install --no-progress
+
+## Install vendors dependencies with yarn
+yarn:
+    @docker-compose exec -u ${UID} -T node yarn install
+
+## Build assets
+assets:
+    @docker-compose exec -u ${UID} -T node npm run build
 
 ## Wait 5 seconds
 sleep:

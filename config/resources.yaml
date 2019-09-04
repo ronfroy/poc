@@ -7,8 +7,8 @@ resources:
     attributes:
       normalization_context: { groups: ['Question', 'Answer'] }
       denormalization_context: { groups: ['Question', 'Answer'] }
-    collectionOperations: ['GET']
-    itemOperations: ['GET']
+    collectionOperations: ['GET', 'POST']
+    itemOperations: ['GET', 'PUT', 'DELETE']
 
   App\Entity\Answer:
     collectionOperations: ['GET']

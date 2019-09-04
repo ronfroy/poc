@@ -56,7 +56,7 @@ class Question
      *
      * @return self
      */
-    public function addCommission(Answer $answer): self
+    public function addAnswer(Answer $answer): self
     {
         if (!$this->answers->contains($answer)) {
             $this->answers[] = $answer;
@@ -71,7 +71,7 @@ class Question
      *
      * @return self
      */
-    public function removeCommission(Answer $answer): self
+    public function removeAnswer(Answer $answer): self
     {
         if ($this->answers->contains($answer)) {
             $this->answers->removeElement($answer);
