@@ -12,6 +12,12 @@ class Question
     /** @var int */
     private $id;
 
+    /** @var string */
+    private $name;
+
+    /** @var null|string */
+    private $code;
+
     /** @var Collection&Answer[] */
     private $answers;
 
@@ -29,6 +35,46 @@ class Question
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param null|string $code
+     *
+     * @return Question
+     */
+    public function setCode(?string $code): Question
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return Question
+     */
+    public function setName(string $name): Question
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -60,7 +106,6 @@ class Question
     {
         if (!$this->answers->contains($answer)) {
             $this->answers[] = $answer;
-            $answer->setQuestion($this);
         }
 
         return $this;
@@ -75,7 +120,6 @@ class Question
     {
         if ($this->answers->contains($answer)) {
             $this->answers->removeElement($answer);
-            $answer->setQuestion(null);
         }
 
         return $this;

@@ -2,5 +2,9 @@ App\Entity\Question:
     attributes:
         id:
             groups: ['Question']
+        name:
+            groups: ['Question']
+        code:
+            groups: ['Question']
         answers:
             groups: ['Question']

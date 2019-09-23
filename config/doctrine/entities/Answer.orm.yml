@@ -5,9 +5,7 @@ App\Entity\Answer:
             type: integer
             generator:
                 strategy: AUTO
-    manyToOne:
-        question:
-            targetEntity: App\Entity\Question
-            joinColumn:
-                name: question_id
-                referencedColumnName: id
+    fields:
+        name:
+            type: string
+            length: 150

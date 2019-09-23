@@ -6,9 +6,22 @@ App\Entity\Question:
             type: integer
             generator:
                 strategy: AUTO
-    oneToMany:
+    fields:
+        name:
+            type: string
+            length: 150
+        code:
+            type: string
+            length: 255
+            nullable: true
+    manyToMany:
         answers:
-            cascade: ['persist', 'remove']
             targetEntity: Answer
-            orphanRemoval: true
-            mappedBy: question
+            joinTable:
+                name: question_answer
+                joinColumns:
+                    question_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    answer_id:
+                        referencedColumnName: id

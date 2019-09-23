@@ -9,8 +9,8 @@ class Answer
     /** @var int */
     private $id;
 
-    /** @var Question */
-    private $question;
+    /** @var string */
+    private $name;
 
     /**
      * @return int
@@ -21,21 +21,21 @@ class Answer
     }
 
     /**
-     * @return Question
+     * @return string
      */
-    public function getQuestion(): Question
+    public function getName(): string
     {
-        return $this->question;
+        return $this->name;
     }
 
     /**
-     * @param Question $question
+     * @param string $name
      *
      * @return Answer
      */
-    public function setQuestion(Question $question): Answer
+    public function setName(string $name): Answer
     {
-        $this->question = $question;
+        $this->name = $name;
 
         return $this;
     }

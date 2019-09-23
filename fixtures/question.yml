@@ -1,10 +1,11 @@
 App\Entity\Question:
     question_1:
+        name: 'Name 1'
 
 App\Entity\Answer:
     question_1_answer_1:
-        question: '@question_1'
+        name: 'answer 1'
     question_1_answer_2:
-        question: '@question_1'
+        name: 'answer 2'
     question_1_answer_3:
-        question: '@question_1'
+        name: 'answer 3'

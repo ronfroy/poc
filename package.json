@@ -6,12 +6,13 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress",
-        "fix": "eslint --fix assets/js/**/*.jsx"
+        "fix": "eslint --fix assets/js/**/*.js"
     },
     "dependencies": {
         "@api-platform/admin": "^0.6.3",
         "@babel/core": "^7.5.5",
-        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/plugin-proposal-export-default-from": "^7.5.2",
+        "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
         "@babel/preset-react": "^7.0.0",
         "@symfony/webpack-encore": "^0.28.0",
         "babel-eslint": "^10.0.3",
@@ -21,11 +22,11 @@
         "eslint-config-standard": "^14.1.0",
         "eslint-config-standard-jsx": "^8.1.0",
         "eslint-import-resolver-webpack": "^0.11.1",
+        "eslint-plugin-import": "^2.18.2",
         "eslint-plugin-node": "^9.2.0",
         "eslint-plugin-promise": "^4.2.1",
         "eslint-plugin-react": "^7.14.3",
         "eslint-plugin-standard": "^4.0.1",
-        "eslint-plugin-import": "^2.18.2",
         "prop-types": "^15.7.2",
         "react": "^16.9.0",
         "react-admin": "^2.9.6",
